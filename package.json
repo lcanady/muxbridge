@@ -1,0 +1,24 @@
+{
+  "name": "muxbridge",
+  "version": "1.0.0",
+  "description": "A Telnet Websocket Bridge",
+  "main": "/dist/index.js",
+  "repository": "https://github.com/lcanady/muxbridge.git",
+  "author": "Lemuel L. Canady, Jr",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx tsc -p tsconfig.json",
+    "dev": "npx ts-node-dev src/index"
+  },
+  "dependencies": {
+    "@types/telnetlib": "^1.0.0",
+    "ansi-to-html": "^0.7.2",
+    "telnetlib": "^1.0.1",
+    "typescript": "^4.5.4",
+    "ws": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.2.2",
+    "ts-node-dev": "^1.1.8"
+  }
+}
