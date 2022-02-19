@@ -7,7 +7,7 @@ const wss = new WebSocketServer({ port: 8080 }, () => "MUX Bridge connected.");
 
 wss.on("connection", (ws) => {
   const c = telnetlib.createConnection({
-    host: "172.0.0.1",
+    host: "bridgetown.io",
     port: 1851,
   });
 
