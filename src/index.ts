@@ -7,8 +7,8 @@ const wss = new WebSocketServer({ port: 8080 }, () => "MUX Bridge connected.");
 
 wss.on("connection", (ws) => {
   const c = telnetlib.createConnection({
-    host: "uncharted.digibear.io",
-    port: 2860,
+    host: "172.0.0.1",
+    port: 1851,
   });
 
   // xfer data websocket => Telnet
@@ -18,7 +18,6 @@ wss.on("connection", (ws) => {
 
   // xfer data Telnet => Websocket
   c.on("data", (data) => {
-    console.log(convert.toHtml(data.toString()));
     ws.send(convert.toHtml(data.toString()));
   });
 
