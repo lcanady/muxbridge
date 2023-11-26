@@ -14,8 +14,10 @@ const convert = new Convert();
 
 const httpsServer = https
   .createServer({ cert, key })
-  .listen(2086, () =>
-    console.log("MUX Bridge HTTPS Server listening on port 2086")
+  .listen(process.env.WSS_PORT, () =>
+    console.log(
+      `MUX Bridge listening to ${process.env.MUX_NAME}: on port ${process.env.WSS_PORT}`
+    )
   );
 
 const wss = new WebSocketServer({ server: httpsServer }, () =>
@@ -24,8 +26,8 @@ const wss = new WebSocketServer({ server: httpsServer }, () =>
 
 wss.on("connection", (ws) => {
   const c = telnetlib.createConnection({
-    host: "termv.io",
-    port: 2080,
+    host: process.env.MUX_HOST || "localhost",
+    port: +(process.env.MUX_PORT || "2086"),
   });
 
   // xfer data websocket => Telnet
